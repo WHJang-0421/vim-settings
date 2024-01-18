@@ -15,16 +15,26 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-require('lspconfig').sourcekit.setup{}
+require('lspconfig').sourcekit.setup{
+    filetypes = {"swift"}
+}
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'jedi_language_server', 'lua_ls', 'tsserver', 'rust_analyzer', 'ocamllsp'},
+  ensure_installed = {'jedi_language_server', 'lua_ls', 'tsserver', 'rust_analyzer', 'ocamllsp', 'clangd'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    clangd = function ()
+        require('lspconfig').clangd.setup({
+            cmd = {
+                'clangd',
+                '--header-insertion=never'
+            }
+        })
+    end
   }
 })
 

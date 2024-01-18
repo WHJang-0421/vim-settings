@@ -1,3 +1,1 @@
-require("remap")
-require("set")
-require("lazyvim")
+require("morrranii")

@@ -1,5 +1,8 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TsUpdate'
+    },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
