@@ -8,4 +8,5 @@ return {
     },
     'tomtom/tcomment_vim',
     'jiangmiao/auto-pairs',
+    'tpope/vim-surround'
 }
